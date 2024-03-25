@@ -1,3 +1,9 @@
+127.0.0.1 # check networking stack
 8.8.8.8 # google DNS
 1.1.1.1 # cloud flare
 4.2.2.1 # level3
+74.6.143.25 # yahoo.com
+151.101.131.5 # cnn.com
+208.67.222.222 # opendns
+1.0.0.1 # cloud flare
+8.8.4.4 # google DNS

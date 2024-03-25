@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"math/rand/v2"
 	"os"
 	"strconv"
 	"strings"
@@ -115,7 +116,8 @@ func main() {
 
 		// unless this is our first time through the entire list, pause for a bit
 		if pktSent > 0 {
-			spinNoReprint("pausing ", func() { time.Sleep(time.Second * 15) })
+			secs := rand.IntN(30)
+			spinNoReprint(fmt.Sprintf("pausing %d  ", secs), func() { time.Sleep(time.Second * time.Duration(secs)) })
 		}
 
 		for i := 0; i < len(hosts); i++ {
@@ -143,7 +145,8 @@ func main() {
 			if pktSent >= maxPkts {
 				break
 			}
-			time.Sleep(time.Second * 1)
+			secs := rand.IntN(3)
+			time.Sleep(time.Second * time.Duration(secs))
 		}
 	}
 	fmt.Printf(ClearLine)

@@ -110,6 +110,8 @@ func main() {
 	spn := spinner.New(spinner.CharSets[35], 300*time.Millisecond)
 	spn.Color("blue", "bold")
 
+	fmt.Printf("%s starting\n", time.Now())
+
 	for pktSent < maxPkts {
 		// re-read every time to support hot-reloading
 		hosts := getHosts()
@@ -117,7 +119,7 @@ func main() {
 		// unless this is our first time through the entire list, pause for a bit
 		if pktSent > 0 {
 			secs := rand.IntN(30)
-			spinNoReprint(fmt.Sprintf("pausing %d  ", secs), func() { time.Sleep(time.Second * time.Duration(secs)) })
+			spinNoReprint(fmt.Sprintf("%s (%d) - pausing %d  ", time.Now(), pktSent, secs), func() { time.Sleep(time.Second * time.Duration(secs)) })
 		}
 
 		for i := 0; i < len(hosts); i++ {
